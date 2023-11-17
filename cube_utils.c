@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:08:03 by lnicoter          #+#    #+#             */
-/*   Updated: 2023/11/15 00:03:52 by lnicoter         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:34:16 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	struct_init(t_cube *game)
 {
 	//non serve per ora
-	game->ceiling_color = 0;
-	game->floor_color = 0;
+	game->c_color_num = 0;
+	game->f_color_num = 0;
 }
 
 void	print_mat(char **mat)

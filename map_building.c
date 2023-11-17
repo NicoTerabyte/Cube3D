@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:58:28 by lnicoter          #+#    #+#             */
-/*   Updated: 2023/11/15 17:42:50 by lnicoter         ###   ########.fr       */
+/*   Updated: 2023/11/17 09:55:52 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,13 @@ void	take_colors(t_cube *game)
 	int	i;
 	int	floor_flag;
 	int	ceiling_flag;
-	char	**rgb;
 
-	rgb = malloc(3 * sizeof(char *) + 1);
 	floor_flag = 0;
 	ceiling_flag = 0;
 	i = -1;
 	while (game->all_map[++i])
-	{
-		if (!ft_strncmp(game->all_map[i], "F", 1))
-		{
-			if (floor_flag == 1)
-				ft_error("Error you put another floor color", game);
-			
-			floor_flag = 1;
-		}
-	}
+		set_colors(game, i, floor_flag, ceiling_flag);
+	color_convertion_int(game);
 }
 /*
 qui salverai con mlx_xpm_file_to_image appena

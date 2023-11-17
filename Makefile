@@ -5,7 +5,7 @@ CC := gcc
 FILES = $(wildcard *.c) \
 
 
-CFLAGS := -Wall -Werror -Wextra -g
+CFLAGS := -g #-Wall -Werror -Wextra
 
 LIBFT := libft
 LIBRARY := -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz

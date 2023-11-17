@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 18:10:18 by lnicoter          #+#    #+#             */
-/*   Updated: 2023/11/17 09:55:34 by lnicoter         ###   ########.fr       */
+/*   Updated: 2023/11/17 11:20:55 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	save_floor_colors(t_cube *game, char *f_color_str)
 	while (*f_color_str == 'F' || *f_color_str == ' ')
 		f_color_str++;
 	test_str = ft_strdup(f_color_str);
-	game->floor_colors = malloc(3 * sizeof(char **) + 1);
 	game->floor_colors = ft_split(test_str, ',');
-	print_mat(game->floor_colors);
 	free(test_str);
 }
 
@@ -34,9 +32,7 @@ void	save_ceiling_colors(t_cube *game, char *c_color_str)
 	while (*c_color_str == 'C' || *c_color_str == ' ')
 		c_color_str++;
 	test_str = ft_strdup(c_color_str);
-	game->ceiling_colors = malloc(3 * sizeof(char **) + 1);
 	game->ceiling_colors = ft_split(test_str, ',');
-	print_mat(game->ceiling_colors);
 	free(test_str);
 }
 

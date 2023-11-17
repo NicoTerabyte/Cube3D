@@ -6,7 +6,7 @@
 /*   By: lnicoter <lnicoter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:58:28 by lnicoter          #+#    #+#             */
-/*   Updated: 2023/11/17 09:55:52 by lnicoter         ###   ########.fr       */
+/*   Updated: 2023/11/17 15:07:42 by lnicoter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,26 @@
 int		check_cardinals(t_cube *game)
 {
 	int	i;
-	int	check_mark[4];
 
 	i = -1;
 	while (++i < 4)
-		check_mark[i] = 0;
+		game->check_card[i] = 0;
 	i = -1;
 	while(game->all_map[++i])
+		check_existence(game, i);
+	if (game->check_card[0] && game->check_card[1]
+		&& game->check_card[2] && game->check_card[3])
 	{
-		if (!ft_strncmp(game->all_map[i], "NO", 2)
-			&& check_mark[0] == 0)
-			check_mark[0] = 1;
-		else if (!ft_strncmp(game->all_map[i], "SO", 2)
-			&& check_mark[1] == 0)
-			check_mark[1] = 1;
-		else if (!ft_strncmp(game->all_map[i], "EA", 2)
-			&& check_mark[2] == 0)
-			check_mark[2] = 1;
-		else if (!ft_strncmp(game->all_map[i], "WE", 2)
-			&& check_mark[3] == 0)
-			check_mark[3] = 1;
-	}
-	if (check_mark[0] && check_mark[1]
-		&& check_mark[2] && check_mark[3])
+		i = -1;
+		printf("checking\n");
+		while (++i < 4)
+		{
+			printf("Value %d\n", game->check_card[i]);
+			if (game->check_card[i] > 1)
+				ft_error("Error double cardinal detected", game);
+		}
 		return (1);
+	}
 	return (0);
 }
 
@@ -54,6 +50,7 @@ void	take_colors(t_cube *game)
 	while (game->all_map[++i])
 		set_colors(game, i, floor_flag, ceiling_flag);
 	color_convertion_int(game);
+	save_colors_in_str(game);
 }
 /*
 qui salverai con mlx_xpm_file_to_image appena
@@ -88,10 +85,7 @@ void	read_and_build(t_cube *game)
 	close(fd);
 	free(line);
 	if (!check_cardinals(game))
-	{
-		printf("There are not enough cardinals point\n");
-		free_struct(game);
-	}
+		ft_error("There are not enough cardinal point", game);
 	take_real_map(game);
 	take_colors(game);
 }

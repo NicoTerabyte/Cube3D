@@ -20,7 +20,7 @@ clean: fclean
 
 fclean: clean
 		make re -C $(MINILIBX)
-		make clean -C $(LIBFT)
+		make fclean -C $(LIBFT)
 		rm -rf $(NAME)
 
 re: fclean all
